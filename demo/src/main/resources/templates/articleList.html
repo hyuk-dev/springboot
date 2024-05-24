@@ -11,11 +11,12 @@
             <h4 class="mb-3">방문해주셔서 감사합니다.</h4>
 
         </div>
-
+        
         <div class="container">
-            <div class="row-6" th:each="item : ${articles}">
+            <button type="button" id="create-btn" th:onclick="|location.href='@{new-article}'|" class="btn btn-secondary btn-sm mb-3">글쓰기</button>
+            <div class="row-6" th:each="i: ${#numbers.sequence(articles.size()-1,0,-1)}" th:with="item=${articles[i]}">
                 <div class="card">
-                    <div class="card-header" th:text="${item.id}">
+                    <div class="card-header" th:text="${#temporals.format(item.createdAt, 'yyyy-MM-dd')}">
 
                     </div>
                     <div class="card-body">
